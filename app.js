@@ -14,7 +14,7 @@ require('dotenv').config()
 
 const models = require('./app/models')
 
-const port = normalizePort(process.env.PORT || '3000')
+const port = normalizePort(process.env.PORT || '5000')
 app.set('port', port);
 
 const server = http.createServer(app)
@@ -109,7 +109,7 @@ function onListening() {
 passport.use(new FacebookStrategy({
   clientID: keys.fbclientID,
   clientSecret: keys.fbclientSecret,
-  callbackURL: "http://localhost:3000/auth/facebook/callback" // route user is send to after thery grant permission
+  callbackURL: "http://localhost:5000/auth/facebook/callback" // route user is send to after thery grant permission
 },
   (accessToken, refreshToken, profile, done, cb) => {
     models.User.create({
