@@ -512,3 +512,6 @@ flex-direction: column;
     }
 
    
+    #login {
+        display: flex;
+    }

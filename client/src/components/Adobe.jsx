@@ -1,38 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
 
-class Profile extends Component {
-
-    content() {
-        switch (this.props.auth) {
-            case null:
-                return;
-            case false:
-                return;
-            default:
-                return [
-                    <span key="{this.props.auth.data.id}">{this.props.auth.data.displayName}</span>
-                ]
-
-        }
-    }
-
-    image() {
-        switch (this.props.auth) {
-            case null:
-                return;
-            case false:
-                return;
-            default:
-                return [
-                    <img key="{this.props.auth.data.id}" src={this.props.auth.data.photos[0].value} alt="" style={{ height: '150px', width: '150px' }} />
-                ]
-        }
-    }
-
-
-
-
+class Adobe extends Component {
     render() {
         return (
             <div>
@@ -40,10 +8,10 @@ class Profile extends Component {
                     <div className="nav-main" id="visibl">
                         <div className="logo">
                             <a href="" className="lone">
-                                <img src="img/instagram.png" alt="" />
+                                <img src="/img/instagram.png" alt="" />
                             </a>
                             <a href="" className="ltwo">
-                                <img src="img/logo.png" alt="" />
+                                <img src="/img/logo.png" alt="" />
                             </a>
                         </div>
                         <div className="search">
@@ -51,13 +19,13 @@ class Profile extends Component {
                         </div>
                         <div className="profile-icons">
                             <a href="">
-                                <img src="img/explore.png" alt="" />
+                                <img src="/img/explore.png" alt="" />
                             </a>
-                            <a href="/logout" className="heart">
-                                <img src="img/heart.png" alt="" />
+                            <a href="" className="heart">
+                                <img src="/img/heart.png" alt="" />
                             </a>
-                            <a href="">
-                                <img src="img/profile.png" alt="" />
+                            <a href="/logout">
+                                <img src="/img/profile.png" alt="" />
                             </a>
                         </div>
                     </div>
@@ -68,22 +36,21 @@ class Profile extends Component {
                 <div className="content-main">
                     <div className="header-main">
                         <div className="mobi-head">
-                            {this.image()}
+                            <img src="/img/adob.jpg" alt="" />
                             <div className="title" id="hidden">
                                 <div className="ico">
                                     <div className="mobi">
-                                        <span>{this.content()}</span>
+                                        <span>adobe</span>
                                         <span>
-                                            <img src="img/verified.png" style={{ height: '20px' }} alt="" />
+                                            <img src="/img/verified.png" style={{ height: '20px' }} alt="" />
                                         </span>
                                     </div>
                                     <div className="mobi">
                                         <a href="">
                                             <span>
                                                 Follow
-                                    </span>
+                                            </span>
                                         </a>
-
                                         <a href="" id="sug">
                                             <div>
                                                 <span>
@@ -91,27 +58,25 @@ class Profile extends Component {
                                                 </span>
                                             </div>
                                         </a>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <div className="main-details">
                             <div className="title" id="visible">
                                 <div className="ico">
-                                    <span>{this.content()}</span>
+                                    <span>adobe</span>
                                     <span>
-                                        <img src="img/verified.png" style={{ height: '20px' }} alt="" />
+                                        <img src="/img/verified.png" style={{ height: '20px' }} alt="" />
                                     </span>
                                     <a href="">
-                                        <span style={{ background: '#fafafa', color: 'black', border: '.5px solid rgb(197, 191, 191)' }}>
-                                            Edit Profile
-                                </span>
+                                        <span>
+                                            Follow
+                                        </span>
                                     </a>
                                     <a href="" id="sug">
                                         <span>
-                                            <img src="img/settings.png" style={{ height: '23px' }} alt="" />
+                                            <span className="glyphicon glyphicon-triangle-bottom"></span>
                                         </span>
                                     </a>
                                 </div>
@@ -121,24 +86,23 @@ class Profile extends Component {
                                     <li>
                                         <span>
                                             <span>1,431</span>posts
-                                </span>
+                                        </span>
                                     </li>
                                     <li>
                                         <a href="">
                                             <span>586k</span>followers
-                                </a>
+                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
                                             <span>692</span>following
-                                </a>
+                                         </a>
                                     </li>
                                 </ul>
                             </div>
-
                             <div className="about">
                                 <span>Adobe We're kicking off the new year on a clean slate and embracing the art of simplifying. Share your
-                            minimalistic work with #Adobe_LessIsMore. adobe.ly/2CRBUD6</span>
+                                     minimalistic work with #Adobe_LessIsMore. adobe.ly/2CRBUD6</span>
                             </div>
                             <div className="stats" id="hidden">
                                 <ul>
@@ -204,27 +168,24 @@ class Profile extends Component {
                                 <div className="col-sm-3  col-xs-4"></div>
                             </a>
                         </div>
-
-
-                        <div className="open" id="open" style={{ background: 'red', height: '50vh', width: '60vw' }}></div>
-
                     </div>
+                    <div className="open" id="open" style={{ background: 'red', height: '50vh', width: '60vw' }} />
                 </div>
                 <div className="mob-icons" id="hid">
-                    <img src="img/home.png" alt="" />
-                    <img src="img/search.png" alt="" />
-                    <img src="img/add.png" alt="" />
-                    <img src="img/heart.png" alt="" />
-                    <img src="img/profile.png" alt="" />
+                    <img src="/img/home.png" alt="" />
+                    <img src="/img/search.png" alt="" />
+                    <img src="/img/add.png" alt="" />
+                    <img src="/img/heart.png" alt="" />
+                    <img src="/img/profile.png" alt="" />
                 </div>
-            </div>
+            </div >
+
+
+
+
         )
     }
+
 }
 
-
-function mapStateToProps(state) {
-    return { auth: state.auth }
-}
-
-export default connect(mapStateToProps)(Profile);
+export default Adobe;

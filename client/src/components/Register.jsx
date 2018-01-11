@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
     render() {
@@ -8,7 +9,7 @@ class Register extends Component {
                     <div className="sign">
                         <img src="/img/logo.png" alt="" />
                         <span>Sign up to see photos and videos from your friends.</span>
-                        <a href="">
+                        <a href="/auth/facebook">
                             <img src="/img/logi.png" id="fb" alt="" />
                         </a>
                         <div className="or">
@@ -27,7 +28,7 @@ class Register extends Component {
                     </div>
                     <div className="logged">
                         <span>Have an account? </span>
-                        <a href="/login"> Log in</a>
+                        <Link to="/login"> Log in</Link>
                     </div>
                 </div>
             </div >
