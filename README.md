@@ -1,6 +1,7 @@
-#Photo sharing platform built on react and node
+###Photo sharing platform built on react and node
 <br/>
-#Local Setup
+<br/>
+###Local Setup
 ### git clone
 ### cd instareload && npm install 
 ### setup various required keys 
@@ -11,14 +12,14 @@
 <br/>
 <br/>
 
-#Current feature
-##log in with facebook
+###Current feature
+###log in with facebook
 
 <br/>
-#Upcoming features
-##register and login
-##photo upload
-##....and many more
+###Upcoming features
+###register and login
+###photo upload
+###....and many more
 
 
 
