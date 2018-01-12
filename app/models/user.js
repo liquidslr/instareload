@@ -13,6 +13,10 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    fbId: String
+    fbId: String,
+    email: String,
+    name: String,
+    password: String,
+    username: String,
 });
 mongoose.model('users', userSchema)

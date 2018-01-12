@@ -13,7 +13,6 @@ class Profile extends Component {
                 return [
                     <span key="{this.props.auth.data.id}">{this.props.auth.data.displayName}</span>
                 ]
-
         }
     }
 
@@ -25,14 +24,10 @@ class Profile extends Component {
                 return;
             default:
                 return [
-                    <img key="{this.props.auth.data.id}" src={this.props.auth.data.photos[0].value} alt="" style={{ height: '150px', width: '150px' }} />
+                    <img className="profile-img" key="{this.props.auth.data.id}" src={this.props.auth.data.photos[0].value} alt="" />
                 ]
         }
     }
-
-
-
-
     render() {
         return (
             <div>
@@ -206,7 +201,16 @@ class Profile extends Component {
                         </div>
 
 
-                        <div className="open" id="open" style={{ background: 'red', height: '50vh', width: '60vw' }}></div>
+                        <div class="open" id="open" style={{ background: 'white', height: '66.88vh', width: '64.86vw' }}>
+                            <div class="image-section"></div>
+                            <div class="comments">
+                                <div class="comment-head">
+                                </div>
+                                <div class="comments-content">
+                                    <div class="content"></div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

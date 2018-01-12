@@ -6,9 +6,13 @@ const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy;
 const keys = require('./config/keys')
 const routes = require('./routes/index');
+
+
+
 const app = express()
 const cookieSession = require('cookie-session')
 const mongoose = require('mongoose')
+
 
 require('dotenv').config()
 require('./app/models/User')
@@ -23,6 +27,8 @@ const port = normalizePort(process.env.PORT || '5000')
 app.set('port', port);
 
 const server = http.createServer(app)
+
+
 
 mongoose.connect(keys.mongoUri)
 
@@ -117,27 +123,6 @@ function onListening() {
 
 
 
-
-
-passport.use(new FacebookStrategy({
-  clientID: keys.fbclientID,
-  clientSecret: keys.fbclientSecret,
-  callbackURL: "http://localhost:5000/auth/facebook/callback",
-  profileFields: ['id', 'displayName', 'photos', 'email']// route user is send to after thery grant permission
-},
-  (accessToken, refreshToken, profile, cb) => {
-
-    User.findOne({ fbId: profile.id }).then((existingUser) => {
-      if (existingUser) {
-      } else {
-        new User({ fbId: profile.id }).save();
-      }
-    })
-    return cb(null, profile);
-  }
-
-))
-
 passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
@@ -145,6 +130,30 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
+
+
+passport.use(new FacebookStrategy({
+  clientID: keys.fbclientID,
+  clientSecret: keys.fbclientSecret,
+  callbackURL: "http://localhost:5000/auth/facebook/callback",
+  proxy: true,
+  profileFields: ['id', 'displayName', 'photos', 'email']// route user is send to after thery grant permission
+},
+  (accessToken, refreshToken, profile, cb) => {
+    User.findOne({ fbId: profile.id }).then((existingUser) => {
+      if (existingUser) {
+      } else {
+        new User({
+          fbId: profile.id,
+          name: profile.displayName,
+        }).save();
+      }
+    })
+    return cb(null, profile);
+  }
+
+))
+
 
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
@@ -161,10 +170,6 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 
-app.get('/user',
-  function (req, res) {
-    res.render('home', { user: req.user });
-  });
 
 
 app.get('/api/user', (req, res) => {
@@ -193,29 +198,22 @@ app.get('/logout', function (req, res) {
 
 
 
+if (process.env.NODE_ENV === 'production') {
+  // Express will serve up production assets
+  // like our main.js file, or main.css file!
+  app.use(express.static('client/build'));
+
+  // Express will serve up the index.html file
+  // if it doesn't recognize the route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+
 
 module.exports = app;
 
 
 
-// passport.serializeUser((user, done) => {
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser((id, done) => {
-//   models.User.findOne({
-//     where: { id: req.params.id }
-//   }).then(user => {
-//     done(null, user.id);
-//   })
-
-
-
-// });
-
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// )
